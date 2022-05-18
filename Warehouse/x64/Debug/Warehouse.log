@@ -1,0 +1,5 @@
+﻿  Class.cpp
+  Warehouse.cpp
+E:\Studia\PK\Magazyn części komputerowych\Warehouse\Warehouse\Warehouse.cpp(2,10): warning C4067: nieoczekiwane tokeny występujące po dyrektywie preprocesora - oczekiwano nowego wiersza
+  Generowanie kodu...
+  Warehouse.vcxproj -> E:\Studia\PK\Magazyn części komputerowych\Warehouse\x64\Debug\Warehouse.exe
