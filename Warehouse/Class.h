@@ -1,3 +1,5 @@
+#pragma once
+
 #include <iostream>
 #include <string>
 
@@ -17,8 +19,9 @@ public:
 class Processor : public Computer_Parts
 {
     string name;
+    int MHz;
 public:
-    Processor(string n = "s", int i = 0);
+    Processor(string n = "s", int i = 0, int MHz = 1);
 
     void show();
     void save();

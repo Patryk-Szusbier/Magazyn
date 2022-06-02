@@ -1,9 +1,14 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <vector>
 #include "Class.h"
 
 using namespace std;
+
+vector <Processor> procesory;
+vector <Graphic_Card> karty;
+
 //--------------------------------------------------------------
 //|                     Klasa Computer_Parts                   |
 //--------------------------------------------------------------
@@ -18,9 +23,11 @@ void Computer_Parts::show()
 //--------------------------------------------------------------
 //|                     Klasa Processor                        |
 //--------------------------------------------------------------
-Processor::Processor(string n , int i) :Computer_Parts(i)
+Processor::Processor(string n , int i, int MHz) :Computer_Parts(i)
 {
     name = n;
+    MHz = MHz;
+    
 }
 void Processor::show()
 {
@@ -71,6 +78,7 @@ void Graphic_Card::open()
 //--------------------------------------------------------------
 //|                     Klasa Warehouse                        |
 //--------------------------------------------------------------
+
 void Warehouse::Towar()
 {
 
@@ -89,6 +97,58 @@ void Warehouse::Dostawa()
 }
 void Warehouse::Add_new_product()
 {
+    int n, pid = 0, vr;
+    string nazwa;
+    char a;
+    float mh;
+    do
+    {
+
+        cout << "Lista czêœci które mo¿na dodaæ: "<<endl;
+        cout << "1.Procesor" << endl;
+        cout << "2.Karta graficzna" << endl;
+        cout << "3.Dysk" << endl;
+        cout << "4.Koœci RAM" << endl;
+        cout << "5.P³yta g³ówna" << endl;
+        cin >> n;
+    
+        if (0 < n < 6)
+        {
+            switch (n)
+            {
+            case 1:
+                cout << "Podaj nazwe.";
+                cin >> nazwa;
+                cout << "Podaj Mhz";
+                cin >> mh;
+                system("cls");
+                procesory.push_back(Processor(nazwa, pid, mh));
+                pid++;
+                cout << "Pomyœlnie dodano nowy produkt";
+                system("cls");
+            
+                break;
+            case 2:
+                cout << "Podaj nazwe."<<endl;
+                cin >> nazwa;
+                cout << "Podaj VRAM"<<endl;
+                cin >> mh;
+                system("cls");
+                karty.push_back(Graphic_Card(nazwa, pid, mh));
+                cout << "Pomyœlnie dodano nowy produkt";
+                
+            }
+            //Reszta potem//
+        }
+        else
+        {
+            cout << "Rz¹dana opcja nie istnieje"<<endl;
+        }
+        cout << "Czy chcesz kontynuowaæ? T/N" << endl;
+        cin >> a;
+        system("cls");
+    } while (a == 'T');
+    Main_Menu();
 
 }
 void Warehouse::Add_new_producent()
