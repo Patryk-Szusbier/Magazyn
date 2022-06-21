@@ -13,19 +13,25 @@ public:
     Computer_Parts(int i);
 
     void show();
+    int get_id();
 };
 
 //Klasa procesora
 class Processor : public Computer_Parts
 {
     string name;
-    int MHz;
+    int amount ;
+    float MHz;
 public:
-    Processor(string n = "s", int i = 0, int MHz = 1);
+    Processor(string n = "s", int i = 0, double MHz = 1, int amm = 0);
 
     void show();
-    void save();
-    void open();
+    void show_all();
+    void show_min();
+    int idd();
+    string namee();
+    int amm();
+    float M();
    
 };
 
@@ -33,9 +39,9 @@ public:
 class Graphic_Card : public Computer_Parts
 {
     string name;
-    int Vram;
+    int Vram,amount;
 public:
-    Graphic_Card(string n = "s", int rr = 0, int id = 0);
+    Graphic_Card(string n = "s", int rr = 0, int id = 0,int am = 0);
 
     void show();
     void save();
@@ -64,20 +70,18 @@ class Power_Supply : public Computer_Parts
 //Klasa z danymi producenta
 class Producent
 {
-    int id, NIP;
+    int id;
     string name, adress;
 public:
-    Producent(int id, string na, string ad, int N)
+    Producent(int id, string na, string ad)
     {
         id = id;
-        NIP = N;
         name = na;
         adress = ad;
     }
     void show()
     {
         cout << "Id Producenta: " << id << endl;
-        cout << "NIP: " << NIP << endl;
         cout << "Nazwa: " << name << ". Adres: " << adress << endl;
     }
 };
@@ -93,5 +97,6 @@ public:
     void Dostawa();
     void Add_new_product();
     void Add_new_producent();
+    void end();
 
 };

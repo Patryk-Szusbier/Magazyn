@@ -2,6 +2,8 @@
 #include <string>
 #include <fstream>
 #include <vector>
+#include <iomanip> 
+#include<fstream>
 #include "Class.h"
 
 using namespace std;
@@ -9,6 +11,7 @@ using namespace std;
 vector <Processor> procesory;
 vector <Graphic_Card> karty;
 
+int pid = 0,prodid = 0;
 //--------------------------------------------------------------
 //|                     Klasa Computer_Parts                   |
 //--------------------------------------------------------------
@@ -20,29 +23,57 @@ void Computer_Parts::show()
 {
     cout << id;
 }
+int Computer_Parts::get_id()
+{
+    return id;
+}
 //--------------------------------------------------------------
 //|                     Klasa Processor                        |
 //--------------------------------------------------------------
-Processor::Processor(string n , int i, int MHz) :Computer_Parts(i)
+Processor::Processor(string n , int i, double MHz,int amm) :Computer_Parts(i)
 {
     name = n;
     MHz = MHz;
+    amount = amm;
     
 }
-void Processor::show()
+//==================================================Do zmiany============================================
+
+void Processor::show_all()
 {
-    cout << "Id procesora: ";
-    Computer_Parts::show();
-    cout << endl;
-    cout << "Nazwa procesora: " << name << endl;
+    Computer_Parts::show(); 
+    cout<< " " << name << "   " << MHz <<endl;
+}
+void Processor::show_min()
+{
+
+}
+string Processor::namee()
+{
+    return name;
+}
+int Processor::amm()
+{
+    return amount;
+}
+float Processor::M()
+{
+    return MHz;
+}
+int Processor::idd()
+{
+
+    return Computer_Parts::get_id();
+
 }
 //--------------------------------------------------------------
 //|                     Klasa Graphic_Card                     |
 //--------------------------------------------------------------
-Graphic_Card::Graphic_Card(string n ,int rr,int id) :Computer_Parts(id)
+Graphic_Card::Graphic_Card(string n ,int rr,int id,int am) :Computer_Parts(id)
 {
     name = n;
     Vram = rr;
+    amount = am;
 }
 void Graphic_Card::show()
 {
@@ -81,7 +112,15 @@ void Graphic_Card::open()
 
 void Warehouse::Towar()
 {
-
+    char a;
+    for (int i = 0; i < procesory.size(); i++)
+    {
+        procesory[i].show_all();
+    }
+    cout << "Chcesz kontynuowaæ?";
+    cin >> a;
+    system("cls");
+    Main_Menu();
 }
 void Warehouse::Stan_magazynowy()
 {
@@ -97,7 +136,7 @@ void Warehouse::Dostawa()
 }
 void Warehouse::Add_new_product()
 {
-    int n, pid = 0, vr;
+    int n, vr;
     string nazwa;
     char a;
     float mh;
@@ -117,17 +156,16 @@ void Warehouse::Add_new_product()
             switch (n)
             {
             case 1:
-                cout << "Podaj nazwe.";
-                cin >> nazwa;
+                cout << "Podaj nazwe ";
+                getline(cin >> ws, nazwa);
                 cout << "Podaj Mhz";
                 cin >> mh;
                 system("cls");
                 procesory.push_back(Processor(nazwa, pid, mh));
                 pid++;
                 cout << "Pomyœlnie dodano nowy produkt";
-                system("cls");
-            
                 break;
+
             case 2:
                 cout << "Podaj nazwe."<<endl;
                 cin >> nazwa;
@@ -135,12 +173,13 @@ void Warehouse::Add_new_product()
                 cin >> mh;
                 system("cls");
                 karty.push_back(Graphic_Card(nazwa, pid, mh));
+                pid++;
                 cout << "Pomyœlnie dodano nowy produkt";
-                
+                break;
             }
             //Reszta potem//
         }
-        else
+        if(n>6)
         {
             cout << "Rz¹dana opcja nie istnieje"<<endl;
         }
@@ -167,6 +206,7 @@ void Warehouse::Main_Menu()
     cout << "4.Dodaj dostawê." << endl;
     cout << "5.Dodaj nowy produkt do listy" << endl;
     cout << "6.Dodaj nowego producenta do listy." << endl;
+    cout << "7.Koniec programu" << endl;
 
     cin >> i;
     switch (i)
@@ -195,5 +235,24 @@ void Warehouse::Main_Menu()
         system("cls");
         Warehouse::Add_new_producent();
         break;
+    case 7:
+        system("cls");
+        Warehouse::end();
+        break;
     }
+    
+}
+void Warehouse::end()
+{
+    ofstream zapis("procesory.txt");
+
+    for(int i = 0; i < procesory.size(); i++)
+    {
+        zapis << procesory[i].get_id()<<endl;
+        zapis << procesory[i].namee()<<endl;
+        zapis << procesory[i].M()<<endl;
+        zapis << procesory[i].amm() << endl;
+
+    }
+    zapis.close();
 }

@@ -1,8 +1,7 @@
 ﻿  Class.cpp
-E:\Studia\PK\Magazyn części komputerowych\Warehouse\Warehouse\Class.cpp(115,15): warning C4804: "<": niebezpieczne użycie typu "bool" w operacji
-E:\Studia\PK\Magazyn części komputerowych\Warehouse\Warehouse\Class.cpp(126,59): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
-E:\Studia\PK\Magazyn części komputerowych\Warehouse\Warehouse\Class.cpp(139,58): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
-E:\Studia\PK\Magazyn części komputerowych\Warehouse\Warehouse\Class.cpp(100,21): warning C4101: "vr": lokalna zmienna, do której nie istnieje odwołanie
+E:\Studia\PK\Magazyn części komputerowych\Warehouse\Warehouse\Class.cpp(154,15): warning C4804: "<": niebezpieczne użycie typu "bool" w operacji
+E:\Studia\PK\Magazyn części komputerowych\Warehouse\Warehouse\Class.cpp(175,58): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
+E:\Studia\PK\Magazyn części komputerowych\Warehouse\Warehouse\Class.cpp(139,12): warning C4101: "vr": lokalna zmienna, do której nie istnieje odwołanie
   Warehouse.cpp
   Generowanie kodu...
   Warehouse.vcxproj -> E:\Studia\PK\Magazyn części komputerowych\Warehouse\x64\Debug\Warehouse.exe
