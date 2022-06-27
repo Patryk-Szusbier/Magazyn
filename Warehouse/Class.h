@@ -52,14 +52,14 @@ public:
 };
 
 //Klasa karty graficznej
-class GraphicCards : public Computer_Parts, public Producent
+class GraphicCards : public Computer_Parts
 {
     string name;
     int Vram,amount,idp;
 public:
     GraphicCards(string n = "s", int rr = 0, int id = 0,int am = 0,int id2 = 0);
 
-    void show();
+    int get_id1();
     void show_all();
     void show_min();
     string get_name();
@@ -134,7 +134,7 @@ public:
     Hard_Drive(string nam = "n", int po = 0, int id1 = 0, int pid = 0, int am = 0);
     void show_all();
     void show_min();
-    string power();
+    string get_name();
     int get_poj();
     int get_amo();
     int get_prod();
@@ -155,5 +155,6 @@ public:
     void Add_new_product();
     void Add_new_producent();
     void end();
+    void start();
 
 };

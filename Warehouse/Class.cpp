@@ -115,14 +115,6 @@ GraphicCards::GraphicCards(string n ,int rr,int id,int am, int id2) :Computer_Pa
     idp = id2;
     
 }
-void GraphicCards::show()
-{
-
-    Computer_Parts::show();
-    cout << "Karta Graficzna " << name << " " << Vram << " GB" << "  ";
-    Producent::gname();
-    cout << endl;
-}
 void GraphicCards::show_all()
 {
     Computer_Parts::show();
@@ -158,6 +150,10 @@ string GraphicCards::get_name()
 int GraphicCards::get_Vram()
 {
     return Vram;
+}
+int GraphicCards::get_idp()
+{
+    return idp;
 }
 int GraphicCards::get_am()
 {
@@ -217,6 +213,26 @@ void RAM_memory::show_min()
     }
     cout << "  " << name << " " << amount << endl;
 }
+string RAM_memory::get_name()
+{
+    return name;
+}
+int RAM_memory::get_GB()
+{
+    return GB;
+}
+int RAM_memory::get_Tac()
+{
+    return Takt;
+}
+int RAM_memory::get_prod()
+{
+    return prod;
+}
+int RAM_memory::get_amo()
+{
+    return amount;
+}
 void RAM_memory::add_amm(int t)
 {
     amount = amount + t;
@@ -271,6 +287,26 @@ void Motherboard::show_min()
         }
     }
     cout << "  " << name << " " << amount << endl;
+}
+string Motherboard::get_name()
+{
+    return name;
+}
+int Motherboard::get_prod()
+{
+    return prod;
+}
+int Motherboard::get_amo()
+{
+    return amount;
+}
+string Motherboard::get_form()
+{
+    return format;
+}
+string Motherboard::get_sock()
+{
+    return socket;
 }
 void Motherboard::add_amm(int t)
 {
@@ -330,6 +366,22 @@ void Power_Supply::add_amm(int t)
 {
     amount = amount + t;
 }
+string Power_Supply::get_name()
+{
+    return name;
+}
+int Power_Supply::get_powder()
+{
+    return Power;
+}
+int Power_Supply::get_prod()
+{
+    return prod;
+}
+int Power_Supply::get_am()
+{
+    return amount;
+}
 void Power_Supply::rem_amm(int t)
 {
     if (amount = amount - t < 0)
@@ -378,6 +430,22 @@ void Hard_Drive::show_min()
         }
     }
     cout << "  " << name << "  " << amount << endl;
+}
+string Hard_Drive::get_name()
+{
+    return name;
+}
+int Hard_Drive::get_poj()
+{
+    return poj;
+}
+int Hard_Drive::get_prod()
+{
+    return prod;
+}
+int Hard_Drive::get_amo()
+{
+    return amount;
 }
 void Hard_Drive::add_amm(int t)
 {
@@ -698,8 +766,14 @@ void Warehouse::Main_Menu()
     }
     
 }
+void Warehouse::start()
+{
+    
+}
+
 void Warehouse::end()
 {
+    //zapis procesorów
     ofstream zapis("procesory.txt");
     for(int i = 0; i < procesory.size(); i++)
     {
@@ -711,7 +785,7 @@ void Warehouse::end()
 
     }
     zapis.close();
-
+    //zapis producentów
     ofstream prod("producenci.txt");
     for (int i = 0; i < producenci.size(); i++)
     {
@@ -719,6 +793,7 @@ void Warehouse::end()
         prod << producenci[i].get_name() << endl;
     }
     prod.close();
+    //zapis kart graficznych
     ofstream kart("karty_graficzne.txt");
     for (int i = 0; i < karty.size(); i++)
     {
@@ -729,4 +804,58 @@ void Warehouse::end()
         kart << karty[i].get_am();
     }
     kart.close();
+    //zapis pamiêci ram
+    ofstream ram("pamiec_ram.txt");
+    for (int i = 0; i < ramy.size(); i++)
+    {
+        ram << ramy[i].get_id();
+        ram << ramy[i].get_name();
+        ram << ramy[i].get_GB();
+        ram << ramy[i].get_Tac();
+        ram << ramy[i].get_prod();
+        ram << ramy[i].get_amo();
+    }
+    ram.close();
+    //zapis p³yt g³ównych
+    ofstream ply("plyty_glowne.txt");
+    for (int i = 0; i < plyty.size(); i++)
+    {
+         ply << plyty[i].get_id();
+         ply << plyty[i].get_name();
+         ply << plyty[i].get_form();
+         ply << plyty[i].get_sock();
+         ply << plyty[i].get_prod();
+         ply << plyty[i].get_amo();
+    }
+    ply.close();
+    //zapis zasilaczy
+    ofstream sup("zasilacze.txt");
+    for (int i = 0; i < zasilacze.size(); i++)
+    {
+        sup << zasilacze[i].get_id();
+        sup << zasilacze[i].get_name();
+        sup << zasilacze[i].get_powder();
+        sup << zasilacze[i].get_prod();
+        sup << zasilacze[i].get_am();
+    }
+    //zapis dysków twardych
+    ofstream hard("dyski.txt");
+    for (int i = 0; i < dyski.size(); i++)
+    {
+        hard << dyski[i].get_id();
+        hard << dyski[i].get_name();
+        hard << dyski[i].get_poj();
+        hard << dyski[i].get_prod();
+        hard << dyski[i].get_amo();
+    }
+
+    ofstream id("id.txt");
+    id << prid << endl;
+    id << grid << endl;
+    id << ramid << endl;
+    id << motid << endl;
+    id << powid << endl;
+    id << haid << endl;
+    id << prodid << endl;
+    id.close();
 }
