@@ -59,7 +59,7 @@ class GraphicCards : public Computer_Parts
 public:
     GraphicCards(string n = "s", int rr = 0, int id = 0,int am = 0,int id2 = 0);
 
-    int get_id1();
+    void show();
     void show_all();
     void show_min();
     string get_name();
@@ -77,7 +77,8 @@ class RAM_memory : public Computer_Parts
     int GB, Takt,prod,amount;
 public:
     RAM_memory(string nam = "s", int g = 0, int T = 0, int id = 0,int idp=0);
-
+    
+    void show();
     void show_all();
     void show_min();
     string get_name();
@@ -97,6 +98,7 @@ class Motherboard : public Computer_Parts
 public:
     Motherboard(string nam = "s", string forr = "ss", string soc = "sss", int amo = 0,int id1 = 0,int id2=0);
 
+    void show();
     void show_all();
     void show_min();
     string get_name();
@@ -116,6 +118,7 @@ class Power_Supply : public Computer_Parts
 public:
     Power_Supply(string nam ="n", int Pow = 0, int am = 0, int pid = 0, int id1 = 0);
 
+    void show();
     void show_all();
     void show_min();
     string get_name();
@@ -132,6 +135,8 @@ class Hard_Drive : public Computer_Parts
     int poj, amount, prod;
 public:
     Hard_Drive(string nam = "n", int po = 0, int id1 = 0, int pid = 0, int am = 0);
+
+    void show();
     void show_all();
     void show_min();
     string get_name();
@@ -152,6 +157,7 @@ public:
     void Stan_magazynowy();
     void Producenci();
     void Dostawa();
+    void odejmij();
     void Add_new_product();
     void Add_new_producent();
     void end();

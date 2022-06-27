@@ -46,7 +46,7 @@ Processor::Processor(string n , int i, float MHz,int amm,int idpr) :Computer_Par
 void Processor::show_all()
 {
     Computer_Parts::show();
-    cout << "  ";
+    cout << " | ";
     for (int i = 0; i < producenci.size(); i++)
     {
         int a = producenci[i].get_id();
@@ -55,12 +55,12 @@ void Processor::show_all()
             producenci[i].gname();
         }
     }
-    cout << " " << name << "   " << MHz << "   " << amount << endl;
+    cout << " | " << name << " | " << MHz << " | " << amount << endl;
 }
 void Processor::show_min()
 {
     Computer_Parts::show();
-    cout << "  ";
+    cout << " | ";
     for (int i = 0; i < producenci.size(); i++)
     {
         int a = producenci[i].get_id();
@@ -69,7 +69,20 @@ void Processor::show_min()
             producenci[i].gname();
         }
     }
-        cout << "  " << name << " "<<amount << endl;
+        cout << " | " << name << " | "<<amount << endl;
+}
+void Processor::show()
+{
+    cout << " | ";
+    for (int i = 0; i < producenci.size(); i++)
+    {
+        int a = producenci[i].get_id();
+        if (idpr == a)
+        {
+            producenci[i].gname();
+        }
+    }
+    cout << " | " << name << " | " << amount << endl;
 }
 string Processor::get_name()
 {
@@ -118,7 +131,7 @@ GraphicCards::GraphicCards(string n ,int rr,int id,int am, int id2) :Computer_Pa
 void GraphicCards::show_all()
 {
     Computer_Parts::show();
-    cout << "  ";
+    cout << " | ";
     for (int i = 0; i < producenci.size(); i++)
     {
         int a = producenci[i].get_id();
@@ -127,12 +140,12 @@ void GraphicCards::show_all()
             producenci[i].gname();
         }
     }
-    cout << " " << name << "   " << Vram << "   " << amount << endl;
+    cout << " | " << name << " | " << Vram << "GB | " << amount << endl;
 }
 void GraphicCards::show_min()
 {
     Computer_Parts::show();
-    cout << "  ";
+    cout << " | ";
     for (int i = 0; i < producenci.size(); i++)
     {
         int a = producenci[i].get_id();
@@ -141,7 +154,20 @@ void GraphicCards::show_min()
             producenci[i].gname();
         }
     }
-    cout << "  " << name << " " << amount << endl;
+    cout << " | " << name << " | " << amount << endl;
+}
+void GraphicCards::show()
+{
+    cout << " | ";
+    for (int i = 0; i < producenci.size(); i++)
+    {
+        int a = producenci[i].get_id();
+        if (idp == a)
+        {
+            producenci[i].gname();
+        }
+    }
+    cout << " | " << name << " | " << amount << endl;
 }
 string GraphicCards::get_name()
 {
@@ -188,7 +214,7 @@ RAM_memory::RAM_memory(string nam, int g, int T, int id, int idp) : Computer_Par
 void RAM_memory::show_all()
 {
     Computer_Parts::show();
-    cout << "  ";
+    cout << " | ";
     for (int i = 0; i < producenci.size(); i++)
     {
         int a = producenci[i].get_id();
@@ -197,12 +223,12 @@ void RAM_memory::show_all()
             producenci[i].gname();
         }
     }
-    cout << " " << name << "   " << GB << "   " <<Takt<<"  "<< amount << endl;
+    cout << " | " << name << " | " << GB << " GB | " <<Takt<<" MHz | "<< amount << endl;
 }
 void RAM_memory::show_min()
 {
     Computer_Parts::show();
-    cout << "  ";
+    cout << " | ";
     for (int i = 0; i < producenci.size(); i++)
     {
         int a = producenci[i].get_id();
@@ -211,7 +237,20 @@ void RAM_memory::show_min()
             producenci[i].gname();
         }
     }
-    cout << "  " << name << " " << amount << endl;
+    cout << " | " << name << " | " << amount << endl;
+}
+void RAM_memory::show()
+{
+    cout << " | ";
+    for (int i = 0; i < producenci.size(); i++)
+    {
+        int a = producenci[i].get_id();
+        if (prod == a)
+        {
+            producenci[i].gname();
+        }
+    }
+    cout << " | " << name << " | " << amount << endl;
 }
 string RAM_memory::get_name()
 {
@@ -263,7 +302,7 @@ Motherboard::Motherboard(string nam, string forr, string soc,int amo,int id1,int
 void Motherboard::show_all()
 {
     Computer_Parts::show();
-    cout << "  ";
+    cout << " | ";
     for (int i = 0; i < producenci.size(); i++)
     {
         int a = producenci[i].get_id();
@@ -272,12 +311,12 @@ void Motherboard::show_all()
             producenci[i].gname();
         }
     }
-    cout << " " << name << "   " << format << "  "<<socket<<"   " << amount << endl;
+    cout << " | " << name << " | " << format << " | "<<socket<<" | " << amount << endl;
 }
 void Motherboard::show_min()
 {
     Computer_Parts::show();
-    cout << "  ";
+    cout << " | ";
     for (int i = 0; i < producenci.size(); i++)
     {
         int a = producenci[i].get_id();
@@ -286,7 +325,20 @@ void Motherboard::show_min()
             producenci[i].gname();
         }
     }
-    cout << "  " << name << " " << amount << endl;
+    cout << " | " << name << " | " << amount << endl;
+}
+void Motherboard::show()
+{
+    cout << " | ";
+    for (int i = 0; i < producenci.size(); i++)
+    {
+        int a = producenci[i].get_id();
+        if (prod == a)
+        {
+            producenci[i].gname();
+        }
+    }
+    cout << " | " << name << " | " << amount << endl;
 }
 string Motherboard::get_name()
 {
@@ -337,7 +389,7 @@ Power_Supply::Power_Supply(string nam, int Pow, int am, int pid, int id1) :Compu
 void Power_Supply::show_all()
 {
     Computer_Parts::show();
-    cout << "  ";
+    cout << " | ";
     for (int i = 0; i < producenci.size(); i++)
     {
         int a = producenci[i].get_id();
@@ -346,12 +398,12 @@ void Power_Supply::show_all()
             producenci[i].gname();
         }
     }
-    cout << "  " << name << " "<<"  "<<Power<<"W   " << amount << endl;
+    cout << " | " << name << " | "<<Power<<" W | " << amount << endl;
 }
 void Power_Supply::show_min()
 {
     Computer_Parts::show();
-    cout << "  ";
+    cout << " | ";
     for (int i = 0; i < producenci.size(); i++)
     {
         int a = producenci[i].get_id();
@@ -360,7 +412,20 @@ void Power_Supply::show_min()
             producenci[i].gname();
         }
     }
-    cout << "  " << name << " " << amount << endl;
+    cout << " | " << name << " | " << amount << endl;
+}
+void Power_Supply::show()
+{
+    cout << " | ";
+    for (int i = 0; i < producenci.size(); i++)
+    {
+        int a = producenci[i].get_id();
+        if (prod == a)
+        {
+            producenci[i].gname();
+        }
+    }
+    cout << " | " << name << " | " << amount << endl;
 }
 void Power_Supply::add_amm(int t)
 {
@@ -406,7 +471,7 @@ Hard_Drive::Hard_Drive(string nam, int po, int id1, int pid, int am) : Computer_
 void Hard_Drive::show_all()
 {
     Computer_Parts::show();
-    cout << "  ";
+    cout << " | ";
     for (int i = 0; i < producenci.size(); i++)
     {
         int a = producenci[i].get_id();
@@ -415,12 +480,12 @@ void Hard_Drive::show_all()
             producenci[i].gname();
         }
     }
-    cout << "  " << name << " " << "  " << poj << "GB   " << amount << endl;
+    cout << " | " << name << " | " << poj << " GB | " << amount << endl;
 }
 void Hard_Drive::show_min()
 {
     Computer_Parts::show();
-    cout << "  ";
+    cout << " | ";
     for (int i = 0; i < producenci.size(); i++)
     {
         int a = producenci[i].get_id();
@@ -429,7 +494,20 @@ void Hard_Drive::show_min()
             producenci[i].gname();
         }
     }
-    cout << "  " << name << "  " << amount << endl;
+    cout << " | " << name << " | " << amount << endl;
+}
+void Hard_Drive::show()
+{
+    cout << " | ";
+    for (int i = 0; i < producenci.size(); i++)
+    {
+        int a = producenci[i].get_id();
+        if (prod == a)
+        {
+            producenci[i].gname();
+        }
+    }
+    cout << " | " << name << " | " << amount << endl;
 }
 string Hard_Drive::get_name()
 {
@@ -499,26 +577,31 @@ void Warehouse::Towar()
 
     char a;
     cout << "===============Procesory================" << endl;
+    cout << "ID | PRODUCENT | NAZWA | ZEGAR | ILOSC"<<endl;
     for (int i = 0; i < procesory.size(); i++)
     {
          procesory[i].show_all();
     }
     cout << endl << "=============Karty graficzne=============" << endl;
+    cout << "ID | PRODUCENT | NAZWA | VRAM | ILOSC"<<endl;
     for (int i = 0; i < karty.size(); i++)
     {
         karty[i].show_all();
     }
     cout << endl << "=================Pamiêæ RAM===================" << endl;
+    cout << "ID | PRODUCENT | NAZWA | GB | TAKTOWANIE | ILOSC " << endl;
     for (int i = 0; i < ramy.size(); i++)
     {
         ramy[i].show_all();
     }
     cout << endl << "================P³yty g³ówne======================" << endl;
+    cout << "ID | PRODUCENT | NAZWA | FORMAT | SOCKET | ILOSC " << endl;
     for (int i = 0; i < plyty.size(); i++)
     {
         plyty[i].show_all();
     }
     cout << endl << "======================Zasilacze======================" << endl;
+    cout << "ID | PRODUCENT | NAZWA | MOC | ILOSC" << endl;
     for (int i = 0; i < zasilacze.size(); i++)
     {
         zasilacze[i].show_all();
@@ -530,6 +613,7 @@ void Warehouse::Towar()
 }
 void Warehouse::Stan_magazynowy()
 {
+    char n;
     cout << "===============Procesory================" << endl;
     for (int i = 0; i < procesory.size(); i++)
     {
@@ -555,6 +639,10 @@ void Warehouse::Stan_magazynowy()
     {
         zasilacze[i].show_min();
     }
+    cout << "Kontynuowaæ? ";
+    cin >> n;
+    system("cls");
+    Main_Menu();
 }
 void Warehouse::Producenci()
 {
@@ -573,7 +661,198 @@ void Warehouse::Producenci()
 }
 void Warehouse::Dostawa()
 {
+    int n,m,b;
+    char tem;
+    do
+    {
+        cout << "Jaki produkt chcesz dodaæ? " << endl;
+        cout << "Lista czêœci które mo¿na dodaæ: " << endl;
+        cout << "1.Procesor" << endl;
+        cout << "2.Karta graficzna" << endl;
+        cout << "3.Dysk" << endl;
+        cout << "4.Koœci RAM" << endl;
+        cout << "5.P³yta g³ówna" << endl;
+        cout << "6.Zasilacz" << endl;
+        cin >> n;
+        system("cls");
+        switch (n)
+        {
+        case 1:
+            for (int i = 0; i < procesory.size(); i++)
+            {
+                cout << (i + 1) << " ";
+                procesory[i].show();
+            }
+            cout << endl << "Ktory produkt chcesz dodaæ? " << endl;
+            cin >> m;
+            cout << "Iloœæ produktu do dodania na magazyn. " << endl;
+            cin >> b;
+            procesory[(m - 1)].add_amm(b);
+            break;
+        case 2:
+            for (int i = 0; i < karty.size(); i++)
+            {
+                cout << (i + 1) << " ";
+                karty[i].show();
+            }
+            cout << endl << "Ktory produkt chcesz dodaæ? " << endl;
+            cin >> m;
+            cout << "Iloœæ produktu do dodania na magazyn. " << endl;
+            cin >> b;
+            karty[(m - 1)].add_amm(b);
+            break;
+        case 3:
+            for (int i = 0; i < dyski.size(); i++)
+            {
+                cout << (i + 1) << " ";
+                dyski[i].show();
+            }
+            cout << endl << "Ktory produkt chcesz dodaæ? " << endl;
+            cin >> m;
+            cout << "Iloœæ produktu do dodania na magazyn. " << endl;
+            cin >> b;
+            dyski[(m - 1)].add_amm(b);
+            break;
+        case 4:
+            for (int i = 0; i < ramy.size(); i++)
+            {
+                cout << (i + 1) << " ";
+                ramy[i].show();
+            }
+            cout << endl << "Ktory produkt chcesz dodaæ? " << endl;
+            cin >> m;
+            cout << "Iloœæ produktu do dodania na magazyn. " << endl;
+            cin >> b;
+            ramy[(m - 1)].add_amm(b);
+            break;
+        case 5:
+            for (int i = 0; i < plyty.size(); i++)
+            {
+                cout << (i + 1) << " ";
+                plyty[i].show();
+            }
+            cout << endl << "Ktory produkt chcesz dodaæ? " << endl;
+            cin >> m;
+            cout << "Iloœæ produktu do dodania na magazyn. " << endl;
+            cin >> b;
+            plyty[(m - 1)].add_amm(b);
+            break;
+        case 6:
+            for (int i = 0; i < zasilacze.size(); i++)
+            {
+                cout << (i + 1) << " ";
+                zasilacze[i].show();
+            }
+            cout << endl << "Ktory produkt chcesz dodaæ? " << endl;
+            cin >> m;
+            cout << "Iloœæ produktu do dodania na magazyn. " << endl;
+            cin >> b;
+            zasilacze[(m - 1)].add_amm(b);
+            break;
+        }
+        cout << "Chcesz kontynuwaæ? T/N";
+        cin >> tem;
+        system("cls");
+    } while (tem == 'T');
+    Main_Menu();
 
+}
+void Warehouse::odejmij()
+{
+    int n, m, b;
+    char tem;
+    do
+    {
+        cout << "Jaki produkt chcesz odj¹æ z magazynu? " << endl;
+        cout << "Lista czêœci które mo¿na wybraæ: " << endl;
+        cout << "1.Procesor" << endl;
+        cout << "2.Karta graficzna" << endl;
+        cout << "3.Dysk" << endl;
+        cout << "4.Koœci RAM" << endl;
+        cout << "5.P³yta g³ówna" << endl;
+        cout << "6.Zasilacz" << endl;
+        cin >> n;
+        system("cls");
+        switch (n)
+        {
+        case 1:
+            for (int i = 0; i < procesory.size(); i++)
+            {
+                cout << (i + 1) << " ";
+                procesory[i].show();
+            }
+            cout << endl << "Ktory produkt chcesz odj¹æ? " << endl;
+            cin >> m;
+            cout << "Iloœæ produktu do dodania na magazyn. " << endl;
+            cin >> b;
+            procesory[(m - 1)].rem_amm(b);
+            break;
+        case 2:
+            for (int i = 0; i < karty.size(); i++)
+            {
+                cout << (i + 1) << " ";
+                karty[i].show();
+            }
+            cout << endl << "Ktory produkt chcesz odj¹æ? " << endl;
+            cin >> m;
+            cout << "Iloœæ produktu do dodania na magazyn. " << endl;
+            cin >> b;
+            karty[(m - 1)].rem_amm(b);
+            break;
+        case 3:
+            for (int i = 0; i < dyski.size(); i++)
+            {
+                cout << (i + 1) << " ";
+                dyski[i].show();
+            }
+            cout << endl << "Ktory produkt chcesz odj¹æ? " << endl;
+            cin >> m;
+            cout << "Iloœæ produktu do dodania na magazyn. " << endl;
+            cin >> b;
+            dyski[(m - 1)].rem_amm(b);
+            break;
+        case 4:
+            for (int i = 0; i < ramy.size(); i++)
+            {
+                cout << (i + 1) << " ";
+                ramy[i].show();
+            }
+            cout << endl << "Ktory produkt chcesz odj¹æ? " << endl;
+            cin >> m;
+            cout << "Iloœæ produktu do dodania na magazyn. " << endl;
+            cin >> b;
+            ramy[(m - 1)].rem_amm(b);
+            break;
+        case 5:
+            for (int i = 0; i < plyty.size(); i++)
+            {
+                cout << (i + 1) << " ";
+                plyty[i].show();
+            }
+            cout << endl << "Ktory produkt chcesz odj¹æ? " << endl;
+            cin >> m;
+            cout << "Iloœæ produktu do dodania na magazyn. " << endl;
+            cin >> b;
+            plyty[(m - 1)].rem_amm(b);
+            break;
+        case 6:
+            for (int i = 0; i < zasilacze.size(); i++)
+            {
+                cout << (i + 1) << " ";
+                zasilacze[i].show();
+            }
+            cout << endl << "Ktory produkt chcesz odj¹æ? " << endl;
+            cin >> m;
+            cout << "Iloœæ produktu do dodania na magazyn. " << endl;
+            cin >> b;
+            zasilacze[(m - 1)].rem_amm(b);
+            break;
+        }
+        cout << "Chcesz kontynuwaæ? T/N";
+        cin >> tem;
+        system("cls");
+    } while (tem == 'T');
+    Main_Menu();
 }
 void Warehouse::Add_new_product()
 {
@@ -728,9 +1007,10 @@ void Warehouse::Main_Menu()
     cout << "2.Wyœwietl stan magazynowy." << endl;
     cout << "3.Wyœwietl dostêpnych producentów." << endl;
     cout << "4.Dodaj dostawê." << endl;
-    cout << "5.Dodaj nowy produkt do listy" << endl;
-    cout << "6.Dodaj nowego producenta do listy." << endl;
-    cout << "7.Koniec programu" << endl;
+    cout << "5.Odejmij z magazynu" << endl;
+    cout << "6.Dodaj nowy produkt do listy" << endl;
+    cout << "7.Dodaj nowego producenta do listy." << endl;
+    cout << "8.Koniec programu" << endl;
 
     cin >> i;
     switch (i)
@@ -753,13 +1033,17 @@ void Warehouse::Main_Menu()
         break;
     case 5:
         system("cls");
+        Warehouse::odejmij();
+        break;  
+    case 6:
+        system("cls");
         Warehouse::Add_new_product();
         break;
-    case 6:
+    case 7:
         system("cls");
         Warehouse::Add_new_producent();
         break;
-    case 7:
+    case 8:
         system("cls");
         Warehouse::end();
         break;

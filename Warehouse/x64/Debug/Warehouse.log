@@ -1,5 +1,5 @@
 ﻿  Class.cpp
-E:\Studia\PK\Magazyn części komputerowych\Warehouse\Warehouse\Class.cpp(580,11): warning C4101: "m": lokalna zmienna, do której nie istnieje odwołanie
+E:\Studia\PK\Magazyn części komputerowych\Warehouse\Warehouse\Class.cpp(859,11): warning C4101: "m": lokalna zmienna, do której nie istnieje odwołanie
   Warehouse.cpp
   Generowanie kodu...
   Warehouse.vcxproj -> E:\Studia\PK\Magazyn części komputerowych\Warehouse\x64\Debug\Warehouse.exe
