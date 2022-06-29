@@ -21,7 +21,7 @@ int main()
 	system("cls");
 	Warehouse s1;
 	s1.start();
-	//s1.Main_Menu();
+	s1.Main_Menu();
 
 }
 

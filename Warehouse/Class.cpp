@@ -1253,7 +1253,6 @@ void Warehouse::start()
                 getline(ids, linia);
                 if (i == 0)
                     prid = stoi(linia);
-                cout << prid;
                 if (i == 1)
                     grid = stoi(linia);
                 if (i == 2)
