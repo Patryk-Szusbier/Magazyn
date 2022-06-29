@@ -4,11 +4,12 @@
 #include <vector>
 #include <iomanip> 
 #include<fstream>
+#include<filesystem>
 #include "Class.h"
 
 using namespace std;
 
-int prid = 1,grid=1,ramid=1,motid=1,powid=1,haid=1, prodid = 1;
+int prid ,grid,ramid,motid,powid,haid, prodid;
 const int zero = 0;
 vector <Producent> producenci;
 vector <Processor> procesory;
@@ -204,12 +205,13 @@ void GraphicCards::rem_amm(int t)
 //--------------------------------------------------------------
 //|                     Klasa RAM_memory                       |
 //--------------------------------------------------------------
-RAM_memory::RAM_memory(string nam, int g, int T, int id, int idp) : Computer_Parts(id)
+RAM_memory::RAM_memory(string nam, int g, int T, int id, int idp, int am) : Computer_Parts(id)
 {
     name = nam;
     GB = g;
     Takt = T;
     prod = idp;
+    amount = am;
 }
 void RAM_memory::show_all()
 {
@@ -937,7 +939,7 @@ void Warehouse::Add_new_product()
                 }
                 cout << endl << "Wybierz producenta. " << endl;
                 cin >> pr;
-                ramy.push_back(RAM_memory(nazwa, vr, temp, ramid, pr));
+                ramy.push_back(RAM_memory(nazwa, vr, temp, ramid, pr,zero));
                 ramid++;
                 cout << "Pomyœlnie dodano nowy produkt";
                 break;
@@ -1050,9 +1052,224 @@ void Warehouse::Main_Menu()
     }
     
 }
+bool is_file_empty(ifstream& pFile)
+{
+    return pFile.peek() == ifstream::traits_type::eof();
+}
 void Warehouse::start()
 {
+    string linia,nazwa,temp1,temp2;
+    int x1, x2, x3,x4,x5;
+    double y1;
+
+ //---------------------------------procesory-------------------------------------
+
+    ifstream pro("procesory.txt");
+    if (!is_file_empty(pro))
+    {
+        while (!pro.eof())
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                getline(pro, linia);
+                if (i == 0)
+                    x1 = stoi(linia);
+                if (i == 1)
+                    nazwa = linia;
+                if (i == 2)
+                    y1 = stod(linia);
+                if (i == 3)
+                    x2 = stoi(linia);
+                if (i == 4)
+                    x3 = stoi(linia);
+            }
+            procesory.push_back(Processor(nazwa, x1, y1, x3, x2));
+        }
+        pro.close();
+    }
     
+
+//----------------------------karty graficzne------------------------------------------
+
+    ifstream gra("karty_graficzne.txt");
+    if (!is_file_empty(gra))
+    {
+        while (!gra.eof())
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                getline(gra, linia);
+                if (i == 0)
+                    x1 = stoi(linia);
+                if (i == 1)
+                    nazwa = linia;
+                if (i == 2)
+                    x2 = stoi(linia);
+                if (i == 3)
+                    x3 = stoi(linia);
+                if (i == 4)
+                    x4 = stoi(linia);
+            }
+            karty.push_back(GraphicCards(nazwa, x2, x1, x4, x3));
+        }
+        gra.close();
+    }
+    
+
+//-------------------------------Producenci-----------------------------------------
+    ifstream prod("producenci.txt");
+    if (!is_file_empty(prod))
+    {
+        while (!prod.eof())
+        {
+
+            for (int i = 0; i < 2; i++)
+            {
+                getline(prod, linia);
+                if (i == 0)
+                    x1 = stoi(linia);
+                if (i == 1)
+                    nazwa = linia;
+            }
+            producenci.push_back(Producent(x1, nazwa));
+        }
+        prod.close();
+    }
+  
+
+//---------------------------------------RAM-------------------------------
+    ifstream ram("pamiec_ram.txt");
+    if (!is_file_empty(ram))
+    {
+        while (!ram.eof())
+        {
+            for (int i = 0; i < 6; i++)
+            {
+                getline(ram, linia);
+                if (i == 0)
+                    x1 = stoi(linia);
+                if (i == 1)
+                    nazwa = linia;
+                if (i == 2)
+                    x2 = stoi(linia);
+                if (i == 3)
+                    x3 = stoi(linia);
+                if (i == 4)
+                    x4 = stoi(linia);
+                if (i == 5)
+                    x5 = stoi(linia);
+            }
+            ramy.push_back(RAM_memory(nazwa, x2, x3, x1, x4, x5));
+        }
+        ram.close();
+    }
+   
+
+//------------------------------P³yta g³ówna--------------------------------
+    ifstream mot("plyty_glowne.txt");
+    if (!is_file_empty(mot))
+    {
+        while (!mot.eof())
+        {
+            for (int i = 0; i < 6; i++)
+            {
+                getline(mot, linia);
+                if (i == 0)
+                    x1 = stoi(linia);
+                if (i == 1)
+                    nazwa = linia;
+                if (i == 2)
+                    temp1 = linia;
+                if (i == 3)
+                    temp2 = linia;
+                if (i == 4)
+                    x2 = stoi(linia);
+                if (i == 5)
+                    x3 = stoi(linia);
+            }
+            plyty.push_back(Motherboard(nazwa, temp1, temp2, x3, x1, x2));
+        }
+        mot.close();
+    }
+    
+//---------------------------Zasilacze------------------------------
+    ifstream sup("zasilacze.txt");
+    if (!is_file_empty(sup))
+    {
+        while (!sup.eof())
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                getline(mot, linia);
+                if (i == 0)
+                    x1 = stoi(linia);
+                if (i == 1)
+                    nazwa = linia;
+                if (i == 2)
+                    x2 = stoi(linia);
+                if (i == 3)
+                    x3 = stoi(linia);
+                if (i == 4)
+                    x4 = stoi(linia);
+            }
+            zasilacze.push_back(Power_Supply(nazwa, x3, x4, x3, x1));
+        }
+        sup.close();
+    }
+
+//---------------------Dyski twarde----------------------------
+    ifstream hard("dyski.txt");
+    if (!is_file_empty(hard))
+    {
+        while (!hard.eof())
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                getline(hard, linia);
+                if (i == 0)
+                    x1 = stoi(linia);
+                if (i == 1)
+                    nazwa = linia;
+                if (i == 2)
+                    x2 = stoi(linia);
+                if (i == 3)
+                    x3 = stoi(linia);
+                if (i == 4)
+                    x4 = stoi(linia);
+            }
+            dyski.push_back(Hard_Drive(nazwa, x2, x1, x3, x4));
+        }
+        hard.close();
+    }
+
+//--------------------Zmienne indeksów--------------------------
+    ifstream ids("id.txt");
+    if (!is_file_empty(ids))
+    {
+        while (!ids.eof())
+        {
+            for (int i = 0; i < 7; i++)
+            {
+                getline(ids, linia);
+                if (i == 0)
+                    prid = stoi(linia);
+                cout << prid;
+                if (i == 1)
+                    grid = stoi(linia);
+                if (i == 2)
+                    ramid = stoi(linia);
+                if (i == 3)
+                    motid = stoi(linia);
+                if (i == 4)
+                    powid = stoi(linia);
+                if (i == 5)
+                    haid = stoi(linia);
+                if (i == 6)
+                    prodid = stoi(linia);
+            }
+        }
+        ids.close();
+    }
 }
 
 void Warehouse::end()
@@ -1061,12 +1278,17 @@ void Warehouse::end()
     ofstream zapis("procesory.txt");
     for(int i = 0; i < procesory.size(); i++)
     {
-        zapis << procesory[i].get_id()<<endl;
-        zapis << procesory[i].get_name()<<endl;
-        zapis << procesory[i].M()<<endl;
+        zapis << procesory[i].get_id() << endl;
+        zapis << procesory[i].get_name() << endl;
+        zapis << procesory[i].M() << endl;
         zapis << procesory[i].get_idpr() << endl;
-        zapis << procesory[i].amm() << endl;
+        zapis << procesory[i].amm();
 
+
+        if (i != (procesory.size() - 1))
+        {
+            zapis << endl;
+        }
     }
     zapis.close();
     //zapis producentów
@@ -1074,63 +1296,87 @@ void Warehouse::end()
     for (int i = 0; i < producenci.size(); i++)
     {
         prod << producenci[i].get_id() << endl;
-        prod << producenci[i].get_name() << endl;
+        prod << producenci[i].get_name();
+        if (i != (producenci.size() - 1))
+        {
+            prod << endl;
+        }
     }
     prod.close();
     //zapis kart graficznych
     ofstream kart("karty_graficzne.txt");
     for (int i = 0; i < karty.size(); i++)
     {
-        kart << karty[i].get_id();
-        kart << karty[i].get_name();
-        kart << karty[i].get_Vram();
-        kart << karty[i].get_idp();
+        kart << karty[i].get_id() << endl;
+        kart << karty[i].get_name() << endl;
+        kart << karty[i].get_Vram() << endl;
+        kart << karty[i].get_idp() << endl;
         kart << karty[i].get_am();
+        if (i != (karty.size() - 1))
+        {
+            kart << endl;
+        }
     }
     kart.close();
     //zapis pamiêci ram
     ofstream ram("pamiec_ram.txt");
     for (int i = 0; i < ramy.size(); i++)
     {
-        ram << ramy[i].get_id();
-        ram << ramy[i].get_name();
-        ram << ramy[i].get_GB();
-        ram << ramy[i].get_Tac();
-        ram << ramy[i].get_prod();
+        ram << ramy[i].get_id() << endl;
+        ram << ramy[i].get_name() << endl;
+        ram << ramy[i].get_GB() << endl;
+        ram << ramy[i].get_Tac() << endl;
+        ram << ramy[i].get_prod() << endl;
         ram << ramy[i].get_amo();
+        if (i != (ramy.size() - 1))
+        {
+            ram << endl;
+        }
     }
     ram.close();
     //zapis p³yt g³ównych
     ofstream ply("plyty_glowne.txt");
     for (int i = 0; i < plyty.size(); i++)
     {
-         ply << plyty[i].get_id();
-         ply << plyty[i].get_name();
-         ply << plyty[i].get_form();
-         ply << plyty[i].get_sock();
-         ply << plyty[i].get_prod();
+         ply << plyty[i].get_id() << endl;
+         ply << plyty[i].get_name() << endl;
+         ply << plyty[i].get_form() << endl;
+         ply << plyty[i].get_sock() << endl;
+         ply << plyty[i].get_prod() << endl;
          ply << plyty[i].get_amo();
+         if (i != (plyty.size() - 1))
+         {
+             ply << endl;
+         }
     }
     ply.close();
     //zapis zasilaczy
     ofstream sup("zasilacze.txt");
     for (int i = 0; i < zasilacze.size(); i++)
     {
-        sup << zasilacze[i].get_id();
-        sup << zasilacze[i].get_name();
-        sup << zasilacze[i].get_powder();
-        sup << zasilacze[i].get_prod();
+        sup << zasilacze[i].get_id() << endl;
+        sup << zasilacze[i].get_name() << endl;
+        sup << zasilacze[i].get_powder() << endl;
+        sup << zasilacze[i].get_prod() << endl;
         sup << zasilacze[i].get_am();
+        if (i != (zasilacze.size() - 1))
+        {
+            sup << endl;
+        }
     }
     //zapis dysków twardych
     ofstream hard("dyski.txt");
     for (int i = 0; i < dyski.size(); i++)
     {
-        hard << dyski[i].get_id();
-        hard << dyski[i].get_name();
-        hard << dyski[i].get_poj();
-        hard << dyski[i].get_prod();
+        hard << dyski[i].get_id() << endl;
+        hard << dyski[i].get_name() << endl;
+        hard << dyski[i].get_poj() << endl;
+        hard << dyski[i].get_prod() << endl;
         hard << dyski[i].get_amo();
+        if (i != (dyski.size() - 1))
+        {
+            hard << endl;
+        }
     }
 
     ofstream id("id.txt");
@@ -1140,6 +1386,6 @@ void Warehouse::end()
     id << motid << endl;
     id << powid << endl;
     id << haid << endl;
-    id << prodid << endl;
+    id << prodid;
     id.close();
 }

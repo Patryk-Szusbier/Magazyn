@@ -76,7 +76,7 @@ class RAM_memory : public Computer_Parts
     string name;
     int GB, Takt,prod,amount;
 public:
-    RAM_memory(string nam = "s", int g = 0, int T = 0, int id = 0,int idp=0);
+    RAM_memory(string nam = "s", int g = 0, int T = 0, int id = 0,int idp=0, int am = 0);
     
     void show();
     void show_all();

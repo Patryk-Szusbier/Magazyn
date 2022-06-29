@@ -1,5 +1,5 @@
 ﻿  Class.cpp
-E:\Studia\PK\Magazyn części komputerowych\Warehouse\Warehouse\Class.cpp(859,11): warning C4101: "m": lokalna zmienna, do której nie istnieje odwołanie
-  Warehouse.cpp
-  Generowanie kodu...
+  The contents of <filesystem> are available only with C++17 or later.
+E:\Studia\PK\Magazyn części komputerowych\Warehouse\Warehouse\Class.cpp(861,11): warning C4101: "m": lokalna zmienna, do której nie istnieje odwołanie
+E:\Studia\PK\Magazyn części komputerowych\Warehouse\Warehouse\Class.cpp(1086,54): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
   Warehouse.vcxproj -> E:\Studia\PK\Magazyn części komputerowych\Warehouse\x64\Debug\Warehouse.exe
